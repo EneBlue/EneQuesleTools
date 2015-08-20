@@ -2,7 +2,7 @@ package org.quesle.tool.fileupload.service;
 
 import java.io.IOException;
 
-import org.apache.tomcat.util.http.fileupload.FileUploadException;
+import org.apache.commons.fileupload.FileUploadException;
 import org.quesle.tool.fileupload.entity.UploadFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 

@@ -6,7 +6,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.log4j.Logger;
-import org.apache.tomcat.util.http.fileupload.FileUploadException;
+import org.apache.commons.fileupload.FileUploadException;
 import org.quesle.tool.fileupload.entity.UploadFile;
 import org.quesle.tool.fileupload.service.FileUploadService;
 import org.springframework.web.bind.annotation.RequestMapping;

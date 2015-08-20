@@ -7,7 +7,7 @@ import java.io.OutputStream;
 
 import org.apache.commons.io.IOUtils;
 import org.apache.log4j.Logger;
-import org.apache.tomcat.util.http.fileupload.FileUploadException;
+import org.apache.commons.fileupload.FileUploadException;
 import org.quesle.tool.fileupload.entity.UploadFile;
 import org.quesle.tool.fileupload.utils.TimeUtils;
 import org.springframework.web.multipart.MultipartFile;
