@@ -8,6 +8,7 @@ import java.io.OutputStream;
 import org.apache.commons.io.IOUtils;
 import org.apache.log4j.Logger;
 import org.apache.tomcat.util.http.fileupload.FileUploadException;
+import org.quesle.tool.fileupload.entity.UploadFile;
 import org.quesle.tool.fileupload.utils.TimeUtils;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
@@ -24,7 +25,7 @@ public class FileUploadServiceImpl implements FileUploadService {
 	
 
 	@Override
-	public void saveFile(MultipartHttpServletRequest request, String name) throws FileUploadException, IOException {
+	public UploadFile saveFile(MultipartHttpServletRequest request, String name) throws FileUploadException, IOException {
 		
 		logger.debug("文件上传名称为input name ：" + name);
 		
@@ -47,12 +48,16 @@ public class FileUploadServiceImpl implements FileUploadService {
 		}
 		
 		//将文件上传到本地
-		this.saveFileToPath(localUrl);
+		return this.saveFileToPath(localUrl);
 	}
 
-	private void saveFileToPath(MultipartFile localUrl) throws IOException {
+	private UploadFile saveFileToPath(MultipartFile localUrl) throws IOException {
+		
+		UploadFile upladFile = new UploadFile();
+		
 		//获取上传文件的名称
 		String originalFilename = localUrl.getOriginalFilename();
+		upladFile.setFileInitName(originalFilename);
 		
 		logger.debug("文件的名称：" + localUrl.getName());
 		
@@ -64,10 +69,14 @@ public class FileUploadServiceImpl implements FileUploadService {
 
 		//生成保存的文件名， 如： 科贸办公网络及打印机设置指南_20150818110756.pdf
 		String name = prefix + "_" + TimeUtils.getCurrentDateTime("yyyyMMddHHmmss") + "." + postfix;
+		upladFile.setFileFinalName(name);
+		
 		
 		//保存到相应的目录中
 		logger.debug("文件保存的文件夹为 :  " + this.uploadPath);
 		File diskFile = new File(this.uploadPath, name);
+		
+		upladFile.setFilePath(diskFile.getPath());
 		
 		OutputStream fos = new FileOutputStream(diskFile);
 		
@@ -76,6 +85,7 @@ public class FileUploadServiceImpl implements FileUploadService {
 		
 		//关闭流
 		IOUtils.closeQuietly(fos);
+		return upladFile;
 	}
 
 	public String getUploadPath() {
