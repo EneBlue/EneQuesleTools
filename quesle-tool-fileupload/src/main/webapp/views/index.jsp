@@ -27,7 +27,6 @@
 			$('form').ajaxForm(
 					{
 						beforeSend : function() {
-							console.log("Ssssssssssssss");
 							status.empty();
 							var percentVal = '0%';
 							bar.width(percentVal)
