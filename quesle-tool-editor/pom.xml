@@ -4,7 +4,7 @@
 	<groupId>ene.quesle.tools</groupId>
 	<artifactId>quesle-tool-editor</artifactId>
 	<packaging>war</packaging>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<name>quesle-tool-editor Maven Webapp</name>
 	<url>http://maven.apache.org</url>
 	<properties>
