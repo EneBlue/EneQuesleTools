@@ -8,3 +8,4 @@ quesle-tool-freemarker 是一个Freemarker使用的工具，暂时实现了一�
 
 quesle-tool-ldap是一个使用spring-ldap连接AD域的实现；
 
+quesle-tool-editor是对UEditor的Java开发，在开发的过程中，需要对UEditor进行部分的修改，详细请看quesle-tool-editor目录下的README.md的内容；
